@@ -1,30 +1,54 @@
 ﻿using CaixaEletronico.DOMAIN;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CaixaEletronico.Controller
 {
     class CaixaEletronicoControler
     {
-        public IRepository<Nota10> _nota10repository;
-        public Nota10Store _nota10store;
+        public IRepository<Nota> _notarepository;
+        public NotaStore _notastore;
 
-        public CaixaEletronicoControler(IRepository<Nota10> nota10repository, Nota10Store nota10store)
+        public CaixaEletronicoControler(IRepository<Nota> notarepository, NotaStore notastore)
         {
-            _nota10repository = nota10repository;
-            _nota10store = nota10store;
+            _notarepository = notarepository;
+            _notastore = notastore;
         }
 
-        public void DepositoNota10(int nota10)
+        public void Operacao(int nota, int tipo, int op)
         {
-            var saldo = _nota10repository.Getall();
+            var saldo = _notarepository.GetByQuantTipo(tipo);
 
-            Nota10Dto dto = new Nota10Dto();
+            NotaDto dto = new NotaDto();
 
-            dto.Valor = saldo.Valor + nota10;
+            //Verifica se é deposito ou saque
+            if (op == 3)
+                dto.Quantidade = saldo.Quantidade + nota;
+            else
+            {
+                // Precisa fazer uma Validação de Saque antes
+                dto.Quantidade = saldo.Quantidade - nota;
+            }
 
-            _nota10store.Deposito(dto);
+            //Carrega o tipo de nota na DTO
+            dto.Tipo = tipo;                      
+
+            _notastore.Store(dto, op);
+        }
+
+        public IEnumerable<NotaDto> Saldo()
+        {
+            var saldo = _notarepository.GetAll();
+
+            var viewmodel = saldo.Select(c => new NotaViewModel
+            {
+                Tipo = c.Tipo,
+                Quantidade = c.Quantidade
+            });
+
+            return viewmodel;
         }
 
 

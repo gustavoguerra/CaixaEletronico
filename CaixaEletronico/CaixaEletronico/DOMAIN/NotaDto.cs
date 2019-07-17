@@ -4,8 +4,9 @@ using System.Text;
 
 namespace CaixaEletronico.DOMAIN
 {
-    class Nota10Dto
+    public class NotaDto
     {
-        public int Valor { get; set; }
+        public int Tipo { get; set; }
+        public int Quantidade { get;  set; }
     }
 }

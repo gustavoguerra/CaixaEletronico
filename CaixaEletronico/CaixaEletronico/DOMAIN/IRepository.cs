@@ -6,7 +6,9 @@ namespace CaixaEletronico.DOMAIN
 {
     interface IRepository<TEntity>
     {
-        TEntity Getall();
+        TEntity GetByQuantTipo(int tipo);
+
+        IEnumerable<TEntity> GetAll();
 
         void Deposito(TEntity entity);
 

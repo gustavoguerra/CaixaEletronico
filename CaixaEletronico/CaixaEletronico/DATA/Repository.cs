@@ -2,26 +2,31 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 
 namespace CaixaEletronico.DATA
 {
     class Repository<TEntity> : IRepository<TEntity>
     {
-        protected TEntity Valor { get; set; }
+        private List<TEntity> Caixa;
 
         public void Deposito(TEntity entity)
         {
-            Valor = entity;
+            throw new NotImplementedException();
+        }
+        public IEnumerable<TEntity> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
-        public TEntity Getall()
+        public TEntity GetByQuantTipo(int tipo)
         {
-            return Valor;
+            throw new NotImplementedException();
         }
 
         public void Saque(TEntity entity)
         {
-            Valor = entity;
+            throw new NotImplementedException();
         }
     }
 }

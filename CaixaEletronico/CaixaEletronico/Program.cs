@@ -15,13 +15,12 @@ namespace CaixaEletronico
             //nota50.Deposito(30);
             //nota10.Deposito(20);
 
+            //nota10.Saque(15);
+
             //var saldo10 = nota10.saldo();
 
             //Console.WriteLine(nota10.saldo()+ " "+nota20.saldo()+" "+nota50.saldo());
-
-          
-
-                      
+                     
         }
     }
 }
