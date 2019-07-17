@@ -8,8 +8,13 @@ namespace CaixaEletronico.DATA
 {
     class Repository<TEntity> : IRepository<TEntity>
     {
-        private List<TEntity> Caixa;
+        //Retira notas da conta
+        public void Saque(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
 
+        // Coloca notas na conta
         public void Deposito(TEntity entity)
         {
             throw new NotImplementedException();
@@ -24,9 +29,5 @@ namespace CaixaEletronico.DATA
             throw new NotImplementedException();
         }
 
-        public void Saque(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

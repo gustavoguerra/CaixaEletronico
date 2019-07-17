@@ -19,7 +19,7 @@ namespace CaixaEletronico.DOMAIN
 
             if (op == 3)
                 _notarepository.Deposito(nota);
-            else
+            else              
                 _notarepository.Saque(nota);
         }
         
